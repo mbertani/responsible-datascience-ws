@@ -1,7 +1,0 @@
-conda create --name ML_workshop
-conda activate ML_workshop
-python --version
-pip install -U scikit-learn
-conda install pandas
-conda install -c anaconda seaborn
-conda install -n ML_workshop ipykernel --update-deps --force-reinstall
