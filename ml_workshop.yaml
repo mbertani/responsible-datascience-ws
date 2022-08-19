@@ -15,4 +15,4 @@ dependencies:
  - pip
  - pip:
     - scikit-learn==1.1.2
-
+    - mljar-supervised==0.11.3
