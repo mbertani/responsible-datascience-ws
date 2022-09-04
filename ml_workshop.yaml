@@ -9,10 +9,13 @@ dependencies:
  - black=22.6.0 # code formatting
  - nb_black=1.0.7 # code formatting jupyter lab
  - watermark=2.3.1 # watermarking notebooksi
- - pandas=1.4.3
- - seaborn=0.11.2
- - rich=12.5.1
+ - pandas=1.4.3 # data transformation
+ - seaborn=0.11.2 # data visualization
+ - rich=12.5.1 # logging
+ - pandas-profiling=3.2.0 # eda
  - pip
  - pip:
-    - scikit-learn==1.1.2
-    - mljar-supervised==0.11.3
+    - scikit-learn~=1.0
+    - mljar-supervised==0.11.3 # autom-ml
+    - raiwidgets==0.21.0 # responsible-ai tools microsoft
+    - ppscore
