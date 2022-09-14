@@ -13,9 +13,10 @@ dependencies:
  - seaborn=0.11.2 # data visualization
  - rich=12.5.1 # logging
  - pandas-profiling=3.2.0 # eda
+ - lightgbm # mljar requires lightgbm
  - pip
  - pip:
     - scikit-learn~=1.0
     - mljar-supervised==0.11.3 # autom-ml
     - raiwidgets==0.21.0 # responsible-ai tools microsoft
-    - ppscore
+    - ppscore==1.1.0
