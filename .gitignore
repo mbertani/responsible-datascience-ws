@@ -1,6 +1,8 @@
 NBD_22_workshop
 results_*
 AutoML_*
+*.html
+.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
