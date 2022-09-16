@@ -15,9 +15,9 @@ import seaborn as sns
 
 def prepare_data(
         data_in: pd.DataFrame,
-        selected_features: list[str],
+        selected_features: list,
         y_ID: str,
-        test_size: float) -> tuple[pd.DataFrame]:
+        test_size: float) -> tuple:
     """Prepare data for training
     Parameters
     ----------
