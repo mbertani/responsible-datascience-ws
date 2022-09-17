@@ -16,3 +16,5 @@ dependencies:
  - pip:
     - scikit-learn==1.1.2
     - mljar-supervised==0.11.3
+    - mlxtend==0.21.0 # plotting misc/
+    - . # the local workshop utilities

@@ -12,12 +12,17 @@ from sklearn.metrics import accuracy_score
 # plotting
 import seaborn as sns
 
+# Use the logging library
+import logging
+logger = logging.getLogger(__name__)
+
 
 def prepare_data(
         data_in: pd.DataFrame,
         selected_features: list,
         y_ID: str,
-        test_size: float) -> tuple:
+        test_size: float,
+        seed: int = 42) -> tuple:
     """Prepare data for training
     Parameters
     ----------
@@ -31,6 +36,8 @@ def prepare_data(
         name of the column used as outcome
     test_size:
         fraction of samples to be used as validation data
+    seed:
+        the random seed to fix the random generators
     Return
     ------
     X_train:
@@ -57,7 +64,7 @@ def prepare_data(
         X,
         y,
         test_size=test_size,
-        random_state=42)
+        random_state=seed)
     return X_train, X_test, y_train, y_test
 
 
@@ -93,7 +100,7 @@ def train_eval_model(model, X_train: np.ndarray, y_train: np.ndarray):
     cf_matrix = confusion_matrix(y_train.values.ravel(), y_pred)
     plot_evaluation_result(cf_matrix)
     acc = accuracy_score(y_train.values.ravel(), y_pred)
-    print(f"The accuracy on the validation data is {acc:.2f}")
+    logger.info(f"The accuracy on the validation data is {acc:.2f}")
     return model
 
 
@@ -112,4 +119,4 @@ def test_eval_model(model, X_valid: np.ndarray, y_valid: np.ndarray) -> None:
     cf_matrix = confusion_matrix(y_valid.values.ravel(), y_pred)
     plot_evaluation_result(cf_matrix)
     acc = accuracy_score(y_valid.values.ravel(), y_pred)
-    print(f"The accuracy on the validation data is {acc:.2f}")
+    logger.info(f"The accuracy on the validation data is {acc:.2f}")
