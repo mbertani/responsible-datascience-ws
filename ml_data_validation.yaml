@@ -1,0 +1,19 @@
+name: ml_data_validation
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+ - python=3.8
+ - jupyterlab=3.4.5
+ - ipywidgets=8.0.1
+ - black=22.6.0 # code formatting
+ - nb_black=1.0.7 # code formatting jupyter lab
+ - watermark=2.3.1 # watermarking notebooksi
+ - rich=12.5.1 # logging
+ - pip
+ - pip:
+    - tensorflow-data-validation==1.10.0 # evaluation of data splits
+    - scikit-learn==1.1.2
+    - pandas==1.4.3
+    - seaborn==0.11.2 # data visualization
+    - . # the local workshop utilities
