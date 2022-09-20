@@ -1,4 +1,4 @@
-name: ml_workshop
+name: ml_automl
 channels:
   - conda-forge
   - defaults
@@ -10,10 +10,11 @@ dependencies:
  - nb_black=1.0.7 # template_notebook -> code formatting jupyter lab
  - watermark=2.3.1 # template_notebook -> watermarking notebooksi
  - rich=12.5.1 # template_notebook -> logging
+ - lightgbm # auto-ml. Can't put it in pip requirements for some reason. BUG.
  - pip
  - pip:
     - pandas==1.4.3 # src/workshop  -> data transformation
     - seaborn==0.11.2 # src/workshop  -> data visualization
     - scikit-learn==1.1.2 # src/workshop -> ml
-    - mlxtend==0.21.0 # plotting misc/
+    - mljar-supervised # auto-ml
     - . # the local workshop utilities

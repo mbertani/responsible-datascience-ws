@@ -1,4 +1,4 @@
-name: ml_workshop
+name: ml_eda
 channels:
   - conda-forge
   - defaults
@@ -14,6 +14,7 @@ dependencies:
  - pip:
     - pandas==1.4.3 # src/workshop  -> data transformation
     - seaborn==0.11.2 # src/workshop  -> data visualization
-    - scikit-learn==1.1.2 # src/workshop -> ml
-    - mlxtend==0.21.0 # plotting misc/
+    - scikit-learn==1.1.2 # src/workshop
+    - pandas-profiling==3.2.0 # eda
+    - ppscore==1.1.0 # eda
     - . # the local workshop utilities
