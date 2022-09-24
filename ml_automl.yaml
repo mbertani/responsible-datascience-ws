@@ -11,10 +11,11 @@ dependencies:
  - watermark=2.3.1 # template_notebook -> watermarking notebooksi
  - rich=12.5.1 # template_notebook -> logging
  - lightgbm # auto-ml. Can't put it in pip requirements for some reason. BUG.
+ - mljar-supervised
  - pip
  - pip:
     - pandas==1.4.3 # src/workshop  -> data transformation
     - seaborn==0.11.2 # src/workshop  -> data visualization
     - scikit-learn==1.1.2 # src/workshop -> ml
-    - mljar-supervised # auto-ml
+    #- mljar-supervised # auto-ml
     - . # the local workshop utilities
