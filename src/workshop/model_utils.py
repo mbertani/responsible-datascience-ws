@@ -161,7 +161,8 @@ def compare_models(
     plt.xticks(X_axis, model_list_names)
     plt.xlabel("Models")
     plt.ylabel("Accuracy")
+    plt.ylim(0, 1)
     plt.title("Accuracy of trained models on training and validation data")
-    plt.legend()
+    plt.legend(loc = 4)
     plt.show()
 
