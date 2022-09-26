@@ -1,6 +1,7 @@
 # Import the necessary packages
 
 # data processing
+from typing import List
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -11,6 +12,7 @@ from sklearn.metrics import accuracy_score
 
 # plotting
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 # Use the logging library
 import logging
@@ -91,9 +93,9 @@ def train_eval_model(model, X_train: np.ndarray, y_train: np.ndarray):
     model:
         some type of model following sklearn's interface
     X_train:
-        training parameters
+        training parameters, matrix of shape (n_t, k)
     y_train:
-        training labels
+        training labels, matrix of shape (n_t, 1)
     """
     model.fit(X_train, y_train.values.ravel())
     y_pred = model.predict(X_train)
@@ -110,13 +112,56 @@ def test_eval_model(model, X_valid: np.ndarray, y_valid: np.ndarray) -> None:
     ----------
     model:
         some type of model following sklearn's interface
-    X_train:
-        training parameters
-    y_train:
-        training labels
+    X_valid:
+        training parameters, matrix of shape (n_v, k)
+    y_valid:
+        training labels, matrix of shape (n_v, 1)
     """
     y_pred = model.predict(X_valid)
     cf_matrix = confusion_matrix(y_valid.values.ravel(), y_pred)
     plot_evaluation_result(cf_matrix)
     acc = accuracy_score(y_valid.values.ravel(), y_pred)
     logger.info(f"The accuracy on the validation data is {acc:.2f}")
+
+
+def compare_models(
+        model_list_names: List,
+        model_list: List,
+        X_train: np.ndarray,
+        y_train: np.ndarray,
+        X_valid: np.ndarray,
+        y_valid: np.ndarray) -> None:
+    """Compare the performance of trained models
+    Parameters
+    ----------
+    model_list_names:
+        list of the name of trained models in the model_list
+    model_list:
+        list of trained models (following sklearns interface)
+    X_train:
+        training parameters, matrix of shape (n_t, k)
+    y_train:
+        training labels,  matrix of shape (n_t, 1)
+    X_valid:
+        training parameters, matrix of shape (n_v, k)
+    y_valid:
+        training labels, matrix of shape (n_v, 1)
+    """
+    train_acc = []
+    valid_acc = []
+    for model in model_list:
+        y_t_pred = model.predict(X_train)
+        train_acc.append(accuracy_score(y_train.values.ravel(), y_t_pred))
+        y_v_pred = model.predict(X_valid)
+        valid_acc.append(accuracy_score(y_valid.values.ravel(), y_v_pred))
+    
+    X_axis = np.arange(len(model_list_names))
+    plt.bar(X_axis - 0.2, train_acc, 0.4, label = 'Train')
+    plt.bar(X_axis + 0.2, valid_acc, 0.4, label = 'Validation')
+    plt.xticks(X_axis, model_list_names)
+    plt.xlabel("Models")
+    plt.ylabel("Accuracy")
+    plt.title("Accuracy of trained models on training and validation data")
+    plt.legend()
+    plt.show()
+
