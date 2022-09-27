@@ -20,4 +20,5 @@ We will use several conda environments for different notebooks:
 - [ml_data_validation](ml_data_validation.yaml): Used to run notebooks under [data_validation]().
 - [ml_automl](ml_automl.yaml): Used to run notebooks under [auto-ml]().
 
-Please make sure you activate the correct environment before runing the notebooks. This is done from the command line by runing `conda activate <environment>`.
+To include these environment, `run conda env update -f <environment>.yaml` in the command line. 
+Once you added them, please make sure you activate the correct environment before runing the notebooks. This is done from the command line by runing `conda activate <environment>`.
