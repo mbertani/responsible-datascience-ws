@@ -6,20 +6,15 @@ dependencies:
  - python=3.8
  - jupyterlab=3.4.5
  - ipywidgets=8.0.1
- - black=22.6.0 # code formatting
- - nb_black=1.0.7 # code formatting jupyter lab
- - watermark=2.3.1 # watermarking notebooksi
- - pandas=1.4.3 # data transformation
- - seaborn=0.11.2 # data visualization
- - rich=12.5.1 # logging
- - pandas-profiling=3.2.0 # eda
- - lightgbm # mljar requires lightgbm
+ - ipykernel=6.15.2
+ - black=22.6.0 # template_notebook -> code formatting
+ - nb_black=1.0.7 # template_notebook -> code formatting jupyter lab
+ - watermark=2.3.1 # template_notebook -> watermarking notebooksi
+ - rich=12.5.1 # template_notebook -> logging
  - pip
  - pip:
-    - mljar-supervised==0.11.3 # auto-ml
+    - pandas==1.4.3 # src/workshop  -> data transformation
+    - seaborn==0.11.2 # src/workshop  -> data visualization
+    - scikit-learn==1.1.2 # src/workshop -> ml
     - mlxtend==0.21.0 # plotting misc/
-    - scikit-learn~=1.0 # find a compatible scikit-learn version at least from 1.0
-    - mljar-supervised==0.11.3 # autom-ml
-    - raiwidgets==0.21.0 # responsible-ai tools microsoft
-    - ppscore==1.1.0 # eda
     - . # the local workshop utilities
