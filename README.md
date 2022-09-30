@@ -31,7 +31,7 @@ Here is how we planned you should run this workshop. You will get to know severa
 
 ### Quick and dirty
 
-Start with the notebook in [ML_intro.ipynb](). Think about the following questions after you ran through the code:
+Start with the notebook in [ML_intro.ipynb]() (in the `ml_workshop` environment). Think about the following questions after you ran through the code:
 
 - Who is the author of this notebook?
 - What is the purpose of the notebook? What did the author tried to achieve?
@@ -70,13 +70,18 @@ Run the notebook [eda/eda_profiler.ipynb]() (by using the `ml_eda` environment) 
 
 - Do you have a better understanding of the data now?
 - Do you trust this data to solve the problem? 
-- Given that the data comes from a questionaire, think about the questions and the answers. Would you have answer those questions the same way one week later? Do you know what population is being represented?
+- Given that the data comes from a questionaire, think about the questions and the answers. Would you have answered those questions the same way one week later? Do you know what population is being represented?
 
 Now run [data_validation/split_analysis.ipynb]() (by using the `ml_data_validation` environment). Here is an example of a tool that can help you analyze your data splits, to make sure the data distributions are similar.
 
 ### AutoML
 
-Can we automate all these processes? Yes we can! Look at the [auto-ml/auto-ml.ipynb]() notebook (by using the `ml_automl` environment), and see how we can benefit from AutoML.
+Can we automate all these processes? Yes we can! Look at the [auto-ml/auto-ml.ipynb]() notebook (by using the `ml_automl` environment), and see how we can benefit from AutoML.  
+
+You can use AutoML as a technique to help you measure how “challenging” a problem/dataset is, which types of models work well for the task, and help decide which algorithm to choose.
+
+BUT: Never use this technique as an end to end solution. Make sure you continue the model development after using it. Always understand the choices made for you by the tools you use!
+
 
 ## Closing discussions
 
