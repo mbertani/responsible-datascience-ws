@@ -8,17 +8,17 @@ Preferably, you have run these steps before our workshop. This will save us some
 1. Install [miniconda](https://docs.conda.io/en/latest/miniconda.html) in your operative system. Of course, if you have conda from before, that is fine. Miniconda is a lighter distribution with less baggage. Make sure you initialize conda for the shell you typically use by running `conda init` in it. 
 2. To create the environment run: `make venv`. Beware: this wil also run `conda update -n base -c defaults conda` to update your environment to the latest version (currently `4.14.0`). The command will also install all the environments used for this workshop. If this command fails for any reason, you can still create the environments manually by running `conda env update -f <environment>.yaml`. To clean up your conda environments, you can run `make remove-venv`, when the workshop is done.
 3. Then activate the environment `conda activate ml_workshop`
-4. Run `make jupyter` to start jupyter lab and open the [ML_intro.ipynb]() notebook. If you came this far, your environment is ready.
+4. Run `make jupyter` to start jupyter lab and open the [ML_intro.ipynb](ML_intro.ipynb) notebook. If you came this far, your environment is ready.
 
 
 ## Environments to use during this workshop
 
 We will use several conda environments for different notebooks:
 
-- [ml_workshop](ml_wokshop.yaml): This is the main environmnent for the workshop. Used to run notebooks within [reproducible-ml](), [misc]().
-- [ml_eda](ml_eda.yaml): Used to run notebooks under [eda]().
-- [ml_data_validation](ml_data_validation.yaml): Used to run notebooks under [data_validation]().
-- [ml_automl](ml_automl.yaml): Used to run notebooks under [auto-ml]().
+- [ml_workshop](ml_wokshop.yaml): This is the main environmnent for the workshop. Used to run notebooks within [reproducible-ml](reproducible-ml), [misc](misc).
+- [ml_eda](ml_eda.yaml): Used to run notebooks under [eda](eda).
+- [ml_data_validation](ml_data_validation.yaml): Used to run notebooks under [data_validation](data_validation).
+- [ml_automl](ml_automl.yaml): Used to run notebooks under [auto-ml](auto-ml).
 
 Please make sure you activate the correct environment before runing the notebooks. This is done from the command line by runing `conda activate <environment>`, and then `make jupyter`. 
 
@@ -31,7 +31,7 @@ Here is how we planned you should run this workshop. You will get to know severa
 
 ### Quick and dirty
 
-Start with the notebook in [ML_intro.ipynb]() (in the `ml_workshop` environment). Think about the following questions after you ran through the code:
+Start with the notebook in [ML_intro.ipynb](ML_intro.ipynb) (in the `ml_workshop` environment). Think about the following questions after you ran through the code:
 
 - Who is the author of this notebook?
 - What is the purpose of the notebook? What did the author tried to achieve?
@@ -47,13 +47,13 @@ As you can see, there are several serious issues with code quality, transparency
 
 You will notice that this repository contains several files. Let's go through some of these:
 
-- [Makefile](). Makefiles help you automate repetitive tasks. It also lowers the bar for people setting up the environment or onboarding new peers into your project. Have a look at the file, and see if you understand what the commands do. Then in your shell run `make` to get a help menu letting you know what you can do with it. If you want to know more about makefiles, have a look at this 10 min minicourse from [calmcode.io](https://calmcode.io/makefiles/the-problem.html)
+- [Makefile](Makefile). Makefiles help you automate repetitive tasks. It also lowers the bar for people setting up the environment or onboarding new peers into your project. Have a look at the file, and see if you understand what the commands do. Then in your shell run `make` to get a help menu letting you know what you can do with it. If you want to know more about makefiles, have a look at this 10 min minicourse from [calmcode.io](https://calmcode.io/makefiles/the-problem.html)
 
 - Environment `yaml` files. We are using conda for this workshop. Personally I'm not happy with conda, since it is very bloated (you will use only a small percentage of what you install), and when building production pipelines, you end up with very large docker images. Also the environment management is ... meehh... But it is easy to use, and it is a good starting point. Open the files and look at the structure. You will see that the main libraries are pinned to their exact version. Here I use a standard in which "environment stuff" is installed via conda, but libraries we use are installed via "pip". In the case you want to change your environment manager, you can easily move your pip dependencies with you. You will also notice the separation of environments. This is for modularity in the ML pipeline. In case you want to extract the EDA part from the modeling part, this will be easy. 
 
-- Writting good jupyter notebooks is an art. Look at the template in [reproducible-ml/template_notebook.ipynb](). Next time you start a notebook, make a copy of this notebook and start from there. It will automatically format your code and watermark your environment (package versions, git branch, git hash, ...). 
+- Writting good jupyter notebooks is an art. Look at the template in [reproducible-ml/template_notebook.ipynb](reproducible-ml/template_notebook.ipynb). Next time you start a notebook, make a copy of this notebook and start from there. It will automatically format your code and watermark your environment (package versions, git branch, git hash, ...). 
 
-- Move repetitive code to python functions. Have a look at [reproducible-ml/clean_modeling.ipynb]() for an example of this. You will notice the [pyproject.toml]() and the files under [src/workshop]. This is code you can reuse in your notebooks, and the packages are already available in you conda environment. If you are developing this package, make sure then to install this project in edit mode (`pip install -e .`) so that changes in your code there will be availabe in your environment. You will also need to add the [autoreload](https://ipython.org/ipython-doc/3/config/extensions/autoreload.html) extension to your notebook, to use your new changes without restarting the whole kernel.
+- Move repetitive code to python functions. Have a look at [reproducible-ml/clean_modeling.ipynb](reproducible-ml/clean_modeling.ipynb) for an example of this. You will notice the [pyproject.toml](pyproject.toml) and the files under [src/workshop]. This is code you can reuse in your notebooks, and the packages are already available in you conda environment. If you are developing this package, make sure then to install this project in edit mode (`pip install -e .`) so that changes in your code there will be availabe in your environment. You will also need to add the [autoreload](https://ipython.org/ipython-doc/3/config/extensions/autoreload.html) extension to your notebook, to use your new changes without restarting the whole kernel.
 
 - Fix your `RANDOM_SEED`. In the rest of the notebooks, we show you how to use this feature. Then your results will be more reproducible.
 
@@ -66,17 +66,17 @@ We are moving away from focusing on model improvements to focusing on improving 
 
 Start by understanding the data you are working on. So far you have just executed the notebooks that care about the model improvements. But do you understand what the data means? 
 
-Run the notebook [eda/eda_profiler.ipynb]() (by using the `ml_eda` environment) and think about the following:
+Run the notebook [eda/eda_profiler.ipynb](eda/eda_profiler.ipynb) (by using the `ml_eda` environment) and think about the following:
 
 - Do you have a better understanding of the data now?
 - Do you trust this data to solve the problem? 
 - Given that the data comes from a questionaire, think about the questions and the answers. Would you have answered those questions the same way one week later? Do you know what population is being represented?
 
-Now run [data_validation/split_analysis.ipynb]() (by using the `ml_data_validation` environment). Here is an example of a tool that can help you analyze your data splits, to make sure the data distributions are similar.
+Now run [data_validation/split_analysis.ipynb](data_validation/split_analysis.ipynb) (by using the `ml_data_validation` environment). Here is an example of a tool that can help you analyze your data splits, to make sure the data distributions are similar.
 
 ### AutoML
 
-Can we automate all these processes? Yes we can! Look at the [auto-ml/auto-ml.ipynb]() notebook (by using the `ml_automl` environment), and see how we can benefit from AutoML.  
+Can we automate all these processes? Yes we can! Look at the [auto-ml/auto-ml.ipynb](auto-ml/auto-ml.ipynb) notebook (by using the `ml_automl` environment), and see how we can benefit from AutoML.  
 
 You can use AutoML as a technique to help you measure how “challenging” a problem/dataset is, which types of models work well for the task, and help decide which algorithm to choose.
 
